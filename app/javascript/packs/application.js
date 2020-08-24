@@ -19,7 +19,7 @@ require("channels");
 //= require popper
 //= require bootstrap
 //= require rails-ujs
-//= require sb-admin-2.min
+//= require sb-admin-2
 //= require activestorage
 //= require turbolinks
 //= require_tree .
