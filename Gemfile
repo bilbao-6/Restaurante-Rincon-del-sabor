@@ -64,3 +64,5 @@ gem 'pundit', '~> 2.1'
 gem 'rolify', '~> 5.3'
 
 gem 'font_awesome5_rails', '~> 1.2'
+
+gem 'sweetalert2', '~> 7.25', '>= 7.25.6'
