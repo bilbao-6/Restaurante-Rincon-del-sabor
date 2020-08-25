@@ -1,18 +1,34 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
-
   def index
-    @categories = Category.all
+    authorize Category
+      @categories = Category.all
+
+
   end
+
+  # def index
+  #   if current_user.has_role? :admin
+  #     @categories = Category.all
+  #   else
+  #     flash[:alert]= "no tinene permiso"
+  #     redirect_to root_path
+  #   end
+
+  # end
 
 
   def show
+    authorize @category
+
   end
 
 
   def new
     @category = Category.new
+    authorize @category
   end
 
 
@@ -25,7 +41,7 @@ class CategoriesController < ApplicationController
 
     respond_to do |format|
       if @category.save
-        format.html { redirect_to @category, notice: 'Categoria se a creado exitosamente.' }
+        format.html { redirect_to @category, notice: 'Category was successfully created.' }
         format.json { render :show, status: :created, location: @category }
       else
         format.html { render :new }
@@ -38,7 +54,7 @@ class CategoriesController < ApplicationController
   def update
     respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to @category, notice: 'la categoria se a actualizado exitosamente.' }
+        format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
         format.html { render :edit }
@@ -51,7 +67,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category.destroy
     respond_to do |format|
-      format.html { redirect_to categories_url, notice: 'la categoria se a eliminado exitosamente' }
+      format.html { redirect_to categories_url, notice: 'Category was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
