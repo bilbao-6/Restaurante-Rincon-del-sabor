@@ -11,8 +11,6 @@
     <tr>
       <td><%= category.nombre %></td>
       <td><%= category.descripcion %></td>
-      <td align="center"><%= link_to 'Mostrar',category_path(category), class:"btn btn-info" %></td>
-      <td align="center"><%= link_to 'Editar', edit_category_path(category), class:"btn btn-info" %></td>
       <td align="center"><%= link_to 'platos', category_dishes_path(category), class:"btn btn-success" %></td>
     </tr>
     <% end %>
