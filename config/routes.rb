@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   resources :categories do
     resources :dishes, module: :categories
   end
+  post '/search', to: 'search#results'
 end

@@ -1,0 +1,46 @@
+<table id="tablaCategories" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <body>
+    <% @categories.each do |category| %>
+    <tr>
+      <td><%= category.nombre %></td>
+      <td><%= category.descripcion %></td>
+      <td align="center"><%= link_to 'platos', category_dishes_path(category), class:"btn btn-success" %></td>
+    </tr>
+    <% end %>
+  </body>
+</table>
+
+<table id="tablaCategories" class="table table-bordered table-hover">
+<thead>
+<tr>
+  <th>Nombre</th>
+  <th>Existencia</th>
+  <th>Precio</th>
+  <th>Descripcion</th>
+  <th>Categoria</th>
+  <th>Descripcion</th>
+  <th colspan="3"></th>
+</tr>
+</thead>
+
+<body>
+  <% @dishes.each do |dish| %>
+      <tr>
+       <td><%= dish.nombre %></td>
+       <td><%= dish.existencia %></td>
+       <td><%= dish.precio %></td>
+       <td><%= dish.descripcion %></td>
+       <td><%= dish.category.nombre %></td>
+       <td><%= dish.category.descripcion %></td>
+
+      </tr>
+    <% end %>
+</body>
+</table>
