@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
 
   def show
-    authorize @category
+    # authorize @category
   end
 
 
@@ -42,7 +42,7 @@ class CategoriesController < ApplicationController
   def update
      respond_to do |format|
        if @category.update(category_params)
-         format.html { redirect_to @category, notice: 'la categoria se a actualizado exitosamente.' }
+         format.html { redirect_to @category, notice: 'la categoria se ha actualizado exitosamente.' }
          format.json { render :show, status: :ok, location: @category }
        else
          format.html { render :edit }

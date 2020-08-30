@@ -1,9 +1,9 @@
-class CategoryPolicy
-  attr_reader :user, :category
+class ClientPolicy
+  attr_reader :user, :client
 
-  def initialize(user, category)
+  def initialize(user, client)
     @user = user
-    @category = category
+    @client = client
   end
 
   def index?

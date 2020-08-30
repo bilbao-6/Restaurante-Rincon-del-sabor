@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Clientes</h1>
+  <div>
+    <%= link_to new_client_path, {class: "btn btn-info shadow"} do%>
+    <%= fa_icon "plus-circle" %>
+    Nuevo cliente
+    <%end%>
+  </div>
+  <br>
+  <div class="card shadow">
+    <div class="card-body">
+      <div class="table-responsive">
+        <p id="notive"><%notice%></p>
+        <table id="TablaClients" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Dirección</th>
+              <th>Cédula</th>
+              <th>Telefono</th>
+              <th>Estado</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @clients.each do |client|%>
+            <tr>
+              <td><%= client.nombre %></td>
+              <td><%= client.correo %></td>
+              <td><%= client.direccion %></td>
+              <td><%= client.cedula %></td>
+              <td><%= client.telefono %></td>
+              <td><%= client.estado %></td>
+              <td align="center"><%= link_to 'Editar', edit_client_path(client), class:"btn btn-info" %></td>
+              <td align="center"><%= link_to 'Borrar', client, method: :delete, data: { confirm: "Desea borrar el cliente #{client.nombre}?"}, class:"btn btn-danger" %></td>
+            </tr>
+            <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  precio_total: 1
+  total: 1
+  cantidad: 1
+  cambio: 1
+  efectivo: 1
+  user: one
+  client: one
+
+two:
+  precio_total: 1
+  total: 1
+  cantidad: 1
+  cambio: 1
+  efectivo: 1
+  user: two
+  client: two
