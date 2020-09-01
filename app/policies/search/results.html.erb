@@ -11,7 +11,14 @@
     <tr>
       <td><%= category.nombre %></td>
       <td><%= category.descripcion %></td>
+      <%if current_user.has_role? :admin%>
+
+      <td align="center"><%= link_to 'Editar', edit_category_path(category), class:"btn btn-info" %></td>
+      <td align="center"><%= link_to 'Borrar', category, method: :delete, data: { confirm: "Desea borrar la categoria de #{category.nombre}?"}, class:"btn btn-danger" %></td>
       <td align="center"><%= link_to 'platos', category_dishes_path(category), class:"btn btn-success" %></td>
+      <%else%>
+        <td align="center"><%= link_to 'platos', category_dishes_path(category), class:"btn btn-success" %></td>
+      <%end%>
     </tr>
     <% end %>
   </body>

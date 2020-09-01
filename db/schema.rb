@@ -10,11 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_23_044149) do
+ActiveRecord::Schema.define(version: 2020_08_29_182439) do
 
   create_table "categories", force: :cascade do |t|
     t.string "nombre"
     t.string "descripcion"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "nombre"
+    t.string "correo"
+    t.string "direccion"
+    t.string "cedula"
+    t.string "telefono"
+    t.boolean "estado"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -41,6 +52,20 @@ ActiveRecord::Schema.define(version: 2020_08_23_044149) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
+  create_table "sales", force: :cascade do |t|
+    t.integer "precio_total"
+    t.integer "total"
+    t.integer "cantidad"
+    t.integer "cambio"
+    t.integer "efectivo"
+    t.integer "user_id", null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_sales_on_client_id"
+    t.index ["user_id"], name: "index_sales_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -62,4 +87,6 @@ ActiveRecord::Schema.define(version: 2020_08_23_044149) do
   end
 
   add_foreign_key "dishes", "categories"
+  add_foreign_key "sales", "clients"
+  add_foreign_key "sales", "users"
 end
