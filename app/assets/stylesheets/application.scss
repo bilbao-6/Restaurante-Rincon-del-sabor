@@ -16,3 +16,25 @@
 @import "bootstrap";
 @import "font_awesome5_webfont";
 @import url("https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i");
+
+a{
+  text-decoration: none !important;
+}
+
+.contenedor{
+  height: 572px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+::-webkit-scrollbar{
+  width: 0.5px;
+  background: transparent;
+}
+
+.contenedor::-webkit-scrollbar{
+  width: 10px;
+}
+.contenedor::-webkit-scrollbar-thumb{
+  background: var(--dark);
+  border-radius: 5px;
+}
