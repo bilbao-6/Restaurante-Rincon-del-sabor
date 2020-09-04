@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid p-2">
   <h1>Clientes</h1>
   <div>
     <%= link_to new_client_path, {class: "btn btn-info shadow"} do%>
@@ -10,18 +10,25 @@
   <div class="card shadow">
     <div class="card-body">
       <div class="table-responsive">
-        <p id="notive"><%notice%></p>
         <table id="TablaClients" class="table table-bordered table-hover">
           <thead>
             <tr>
+             <% if @clients.empty? %>
               <th>Nombre</th>
               <th>Correo</th>
               <th>Dirección</th>
               <th>Cédula</th>
               <th>Telefono</th>
               <th>Estado</th>
-              <th></th>
-              <th></th>
+             <% else %>
+              <th>Nombre</th>
+              <th>Correo</th>
+              <th>Dirección</th>
+              <th>Cédula</th>
+              <th>Telefono</th>
+              <th>Estado</th>
+              <th colspan="3"></th>
+             <% end %>
             </tr>
           </thead>
           <tbody>
