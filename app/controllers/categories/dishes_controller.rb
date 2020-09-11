@@ -4,7 +4,7 @@ class Categories::DishesController < ApplicationController
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
   def index
-    @dishes = @category.dishe.spaginate(page: params[:page], per_page:4)
+    @dishes = @category.dishes.all
   end
 
   def new

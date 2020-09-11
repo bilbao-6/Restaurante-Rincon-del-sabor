@@ -3,8 +3,14 @@
     <%= e.input :nombre%>
     <%= e.input :correo%>
     <%= e.input :direccion%>
-    <%= e.input :cedula%>
-    <%= e.input :telefono%>
+    <div class="row">
+      <div class="col">
+        <%= e.input :cedula%>
+      </div>
+      <div class="col">
+        <%= e.input :telefono%>
+      </div>
+    </div>
     <span>¿Desea activar este cliente?</span>
     <%= e.input :estado%>
   </div>
