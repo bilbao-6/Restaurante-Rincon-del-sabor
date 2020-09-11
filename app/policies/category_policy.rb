@@ -13,7 +13,7 @@ class CategoryPolicy
   def new?
     @user.has_role? :admin
   end
-  def show?
-
+  def edit?
+    @user.has_role? :admin
   end
 end

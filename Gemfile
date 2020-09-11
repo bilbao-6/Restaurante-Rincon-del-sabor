@@ -77,5 +77,5 @@ gem 'rolify', '~> 5.3'
 # Iconos
 gem 'font_awesome5_rails', '~> 1.2'
 
-# Alertas personalizadas
-gem 'sweetalert2', '~> 7.25', '>= 7.25.6'
+# Paginacion
+gem 'will_paginate-bootstrap4'

@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
 
   def index
     authorize Client
-    @clients = Client.all
+    @clients = Client.paginate(page: params[:page], per_page:4)
   end
 
   def new

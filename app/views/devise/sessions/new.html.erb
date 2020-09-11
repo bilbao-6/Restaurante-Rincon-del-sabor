@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container mb-2">
   <div class="row mt-4">
-    <div class="col-md-4 mr-auto">
-      <div class="mt-4">
+    <div class="col-md-4 mx-auto">
+      <div class="card shadow mt-4">
         <div class="card-body">
           <h2 align="center">Iniciar session</h2>
           <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -18,15 +18,9 @@
               <%= f.button :submit, "Iniciar session",class:"btn btn-primary btn-block" %>
             </div>
           <% end %>
-          <br>
-          <%= render "devise/shared/links" %>
         </div>
+          <%= render "devise/shared/links" %>
       </div>
-    </div>
-    <div class="col-md-5 ml-auto">
-      <a href="https://stories.freepik.com/business">
-        <%= image_tag("Take Away.gif", :alt => "presentacion") %>
-      </a>
     </div>
   </div>
 </div>
