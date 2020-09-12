@@ -79,3 +79,6 @@ gem 'font_awesome5_rails', '~> 1.2'
 
 # Paginacion
 gem 'will_paginate-bootstrap4'
+
+# Flash toastr
+gem 'toastr-rails'
