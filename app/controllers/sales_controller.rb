@@ -1,25 +1,17 @@
 class SalesController < ApplicationController
+  before_action :set_sale, only: [:edit, :destroy]
 
   def index
     @sales = Sale.paginate(page: params[:page], per_page:4)
   end
 
   def new
-    @sale = Sale.new
+    @sale = Sale.create(total: 0)
+    redirect_to edit_sale_path(@sale)
   end
 
-  def create
-  @sale = Sale.new(sale_params)
-
-  respond_to do |format|
-      if @sale.save
-        format.html {redirect_to sales_path, notice: 'la venta se ha generado'}
-        format.json {render :show, status: :created, location: @sales}
-      else
-        format.html {render :new}
-        format.json {reder json: @sales.errors, status: :unprocessable_entity}
-      end
-    end
+  def edit
+    @dishes_sale = @sale.sale_details
   end
 
   def destroy
@@ -33,10 +25,10 @@ class SalesController < ApplicationController
   private
 
   def set_sale
-    @sales = Sale.find(params[:id])
+    @sale = Sale.find(params[:id])
   end
 
   def sale_params
-    params.require(:sale).permit(:total, :cantidad, :efectivo, :cambio, :precio_total)
+    params.require(:sale).permit(:total)
   end
 end

@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-6">
+    <h1 class="mb-2 text-gray">venta</h1>
+  </div>
+  <div class="col-md-6" style="text-align:right;">
+    <h3 class="mr-3" id="total_venta_lbl">Total $  <%= @sale.total %></h3>
+  </div>
+  <div class="col-md-5">
+    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#buscador_plato">Buscar plato</button>
+    <button type="button" class="btn btn-info"data-toggle="modal" data-target="#buscador_cliente">Buscar cliente</button>
+  </div>
+  <div class="col-md-7" style="text-align:right;">
+    <%= link_to 'Generar venta', sales_path, class: "btn btn-success" %>
+    <%= link_to 'Cancelar Venta', @sale, method: :delete, data: {confirm: "Desea Cancelar venta"}, class: "btn btn-danger" %>
+  </div>
+  <div class="col-md-3" id="cliente_venta">
+   <h5 class="mt-4">Datos del cliente</h5>
+  </div>
+</div>
+<br>
+<div class="card shadow mb-4">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="tabla_ventas">
+        <thead>
+          <tr>
+            <% if @dishes_sale.empty? %>
+            <th>Plato</th>
+            <th>Cantidad</th>
+            <th>Precio unitario</th>
+            <th>Precio total</th>
+            <% else %>
+            <th>Plato</th>
+            <th>Cantidad</th>
+            <th>Precio unitario</th>
+            <th>Precio total</th>
+            <th colspan="3"></th>
+            <% end %>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div
+  </div>
+</div>
+<% @model = @sale %>
+<%= render 'search/dishes', model: @model, tipo: "sale" %>
+<%# render 'search/clients' %>

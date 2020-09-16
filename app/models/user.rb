@@ -5,7 +5,7 @@ class User < ApplicationRecord
   after_create :user_mailer
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         has_many :sales
+
          has_one :profile
 
          def user_mailer

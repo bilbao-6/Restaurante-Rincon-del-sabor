@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_05_193246) do
+ActiveRecord::Schema.define(version: 2020_09_16_030502) do
 
   create_table "categories", force: :cascade do |t|
     t.string "nombre"
@@ -64,18 +64,18 @@ ActiveRecord::Schema.define(version: 2020_09_05_193246) do
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
   end
 
-  create_table "sales", force: :cascade do |t|
-    t.integer "precio_total"
-    t.integer "total"
+  create_table "sale_details", force: :cascade do |t|
     t.integer "cantidad"
-    t.integer "cambio"
-    t.integer "efectivo"
-    t.integer "user_id", null: false
-    t.integer "client_id", null: false
+    t.integer "sale_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["client_id"], name: "index_sales_on_client_id"
-    t.index ["user_id"], name: "index_sales_on_user_id"
+    t.index ["sale_id"], name: "index_sale_details_on_sale_id"
+  end
+
+  create_table "sales", force: :cascade do |t|
+    t.integer "total"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_09_05_193246) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -100,6 +101,5 @@ ActiveRecord::Schema.define(version: 2020_09_05_193246) do
 
   add_foreign_key "dishes", "categories"
   add_foreign_key "profiles", "users"
-  add_foreign_key "sales", "clients"
-  add_foreign_key "sales", "users"
+  add_foreign_key "sale_details", "sales"
 end
