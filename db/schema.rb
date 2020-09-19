@@ -73,9 +73,11 @@ ActiveRecord::Schema.define(version: 2020_09_16_030502) do
   end
 
   create_table "sales", force: :cascade do |t|
-    t.integer "total"
+    t.integer "total", default: 0
+    t.integer "client_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["client_id"], name: "index_sales_on_client_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -102,4 +104,5 @@ ActiveRecord::Schema.define(version: 2020_09_16_030502) do
   add_foreign_key "dishes", "categories"
   add_foreign_key "profiles", "users"
   add_foreign_key "sale_details", "sales"
+  add_foreign_key "sales", "clients"
 end

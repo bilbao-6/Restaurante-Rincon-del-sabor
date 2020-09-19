@@ -6,12 +6,22 @@ class SalesController < ApplicationController
   end
 
   def new
-    @sale = Sale.create(total: 0)
-    redirect_to edit_sale_path(@sale)
+    @sale = Sale.new
   end
 
-  def edit
-    @dishes_sale = @sale.sale_details
+  def create
+    @sale = Sale.new(sale_params)
+
+    respond_to do |format|
+      if @sale.save
+        format.html { redirect_to sales_url, notice: '  se ha creado'}
+
+        format.json { render :show, status: :created, location: @sale }
+      else
+        format.html { render :new }
+        format.json { render json: @sale.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
@@ -29,6 +39,6 @@ class SalesController < ApplicationController
   end
 
   def sale_params
-    params.require(:sale).permit(:total)
+    params.require(:sale).permit(:total, :client_id)
   end
 end
